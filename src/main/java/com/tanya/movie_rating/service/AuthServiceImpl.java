@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.tanya.movie_rating.constant.CommonConstant;
 import com.tanya.movie_rating.dao.MUserDao;
-import com.tanya.movie_rating.dto.muser.MUserDto;
 import com.tanya.movie_rating.dto.signup_user.SignupRequestDto;
+import com.tanya.movie_rating.dto.signup_user.SignupResponseDto;
 import com.tanya.movie_rating.entity.MUser;
 
 @Service
@@ -19,7 +19,7 @@ public class AuthServiceImpl implements AuthService{
 	private MUserDao mUserDao;
 
 	@Override
-	public MUserDto createUser(SignupRequestDto signupRequestDto) {
+	public SignupResponseDto createUser(SignupRequestDto signupRequestDto) {
 		LocalDateTime now = LocalDateTime.now();
 		MUser user = new MUser();
 		user.setEmail(signupRequestDto.getEmail());
@@ -37,12 +37,12 @@ public class AuthServiceImpl implements AuthService{
 		int count = mUserDao.insert(user);
 		
 		if (count > 0) {
-			MUserDto mUserDto = new MUserDto();
-			mUserDto.setEmail(signupRequestDto.getEmail());
-			mUserDto.setIsEnabled(CommonConstant.IS_ENABLE);
-			mUserDto.setName(signupRequestDto.getName());
-			mUserDto.setRole(CommonConstant.ROLE_USER);
-			return mUserDto;
+			SignupResponseDto result = new SignupResponseDto();
+			result.setEmail(signupRequestDto.getEmail());
+			result.setIsEnabled(CommonConstant.IS_ENABLE);
+			result.setName(signupRequestDto.getName());
+			result.setRole(CommonConstant.ROLE_USER);
+			return result;
 		}
 		return null;
 	}

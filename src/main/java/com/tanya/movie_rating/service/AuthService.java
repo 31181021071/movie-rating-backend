@@ -1,10 +1,10 @@
 package com.tanya.movie_rating.service;
 
-import com.tanya.movie_rating.dto.muser.MUserDto;
 import com.tanya.movie_rating.dto.signup_user.SignupRequestDto;
+import com.tanya.movie_rating.dto.signup_user.SignupResponseDto;
 
 public interface AuthService {
 
-	MUserDto createUser(SignupRequestDto signupRequestDto);
+	SignupResponseDto createUser(SignupRequestDto signupRequestDto);
 
 }

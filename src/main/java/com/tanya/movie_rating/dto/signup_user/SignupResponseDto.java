@@ -1,12 +1,12 @@
-package com.tanya.movie_rating.dto.muser;
+package com.tanya.movie_rating.dto.signup_user;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class MUserDto {
-
+public class SignupResponseDto {
+	
     private Integer id;
 
     private String name;

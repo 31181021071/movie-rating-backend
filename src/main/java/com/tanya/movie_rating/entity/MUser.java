@@ -5,6 +5,7 @@ import org.seasar.doma.Entity;
 import org.seasar.doma.GeneratedValue;
 import org.seasar.doma.GenerationType;
 import org.seasar.doma.Id;
+import org.seasar.doma.Table;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(name = "m_user")
 public class MUser extends CommonEntity {
 
 	@Id
