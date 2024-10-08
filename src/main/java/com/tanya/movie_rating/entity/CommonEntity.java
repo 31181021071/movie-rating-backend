@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
+import org.seasar.doma.Version;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +28,7 @@ public class CommonEntity {
     @Column(name = "update_by")
     private String updatedBy;
 
+    @Version
     @Column(name = "version")
     private Integer version; 
 }

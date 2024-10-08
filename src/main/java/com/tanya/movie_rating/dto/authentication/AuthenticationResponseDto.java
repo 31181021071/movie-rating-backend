@@ -10,4 +10,6 @@ import lombok.Setter;
 public class AuthenticationResponseDto {
 
 	private String jwt;
+	
+	private MUserDto userInfo;
 }

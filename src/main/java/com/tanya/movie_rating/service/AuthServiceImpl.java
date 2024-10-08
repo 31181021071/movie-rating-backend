@@ -1,6 +1,7 @@
 package com.tanya.movie_rating.service;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.tanya.movie_rating.constant.CommonConstant;
 import com.tanya.movie_rating.dao.MUserDao;
+import com.tanya.movie_rating.dto.authentication.MUserDto;
 import com.tanya.movie_rating.dto.signup_user.SignupRequestDto;
 import com.tanya.movie_rating.dto.signup_user.SignupResponseDto;
 import com.tanya.movie_rating.entity.MUser;
@@ -17,6 +19,16 @@ public class AuthServiceImpl implements AuthService{
 	
 	@Autowired
 	private MUserDao mUserDao;
+	
+
+	@Override
+	public boolean checkEmailExist(SignupRequestDto signupRequestDto) {
+		MUser existUser = mUserDao.selectByEmail(signupRequestDto.getEmail());
+		if (!Objects.isNull(existUser)) {
+			return true;
+		}
+		return false;
+	}
 
 	@Override
 	public SignupResponseDto createUser(SignupRequestDto signupRequestDto) {
@@ -45,6 +57,17 @@ public class AuthServiceImpl implements AuthService{
 			return result;
 		}
 		return null;
+	}
+
+	@Override
+	public MUserDto getUserInfo(String email) {
+		MUser existUser = mUserDao.selectByEmail(email);
+		MUserDto userInfo = new MUserDto();
+		userInfo.setEmail(existUser.getEmail());
+		userInfo.setEnable(existUser.getIsEnabled());
+		userInfo.setName(existUser.getName());
+		userInfo.setRole(existUser.getRole());
+		return userInfo;
 	}
 
 }

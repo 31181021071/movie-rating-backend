@@ -1,5 +1,8 @@
 package com.tanya.movie_rating.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +22,18 @@ public class SignupUserController {
 	
 	@PostMapping("/register")
 	public ResponseEntity<?> createUser(@RequestBody SignupRequestDto signupRequestDto) {
+		Map<String, String> result = new HashMap<String, String>();
+		boolean isExistEmail = authService.checkEmailExist(signupRequestDto);
+		if (isExistEmail) {
+			result.put("fail", "This email already been used. Please use a different email.");
+			return new ResponseEntity<>(result, HttpStatus.OK);
+		}
 		SignupResponseDto createdUser = authService.createUser(signupRequestDto);
 		if (createdUser == null) {
-			return new ResponseEntity<>("User is not created, try again later", HttpStatus.BAD_REQUEST);
+			result.put("fail", "User is not created, try again later.");
+			return new ResponseEntity<>(result, HttpStatus.OK);
 		}
-		return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
+		return new ResponseEntity<>(createdUser, HttpStatus.OK);
 	}
 
 }

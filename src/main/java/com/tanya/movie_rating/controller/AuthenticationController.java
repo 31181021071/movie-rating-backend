@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tanya.movie_rating.dto.authentication.AuthenticationRequestDto;
 import com.tanya.movie_rating.dto.authentication.AuthenticationResponseDto;
+import com.tanya.movie_rating.dto.authentication.MUserDto;
+import com.tanya.movie_rating.service.AuthService;
 import com.tanya.movie_rating.service.jwt.UserDetailsServiceImpl;
 import com.tanya.movie_rating.utils.JwtUtil;
 
@@ -31,6 +33,9 @@ public class AuthenticationController {
 	@Autowired
 	private JwtUtil jwtUtil;
 	
+	@Autowired
+	private AuthService authService;
+	
 	@PostMapping("/authentication")
 	public AuthenticationResponseDto createAuthenticationToken(@RequestBody AuthenticationRequestDto authenticationRequest, HttpServletResponse response) throws BadCredentialsException, DisabledException, UsernameNotFoundException, IOException, java.io.IOException {
 		try {
@@ -43,6 +48,7 @@ public class AuthenticationController {
 		}
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getEmail());
 		final String jwt = jwtUtil.generateToken(userDetails.getUsername());
-		return new AuthenticationResponseDto(jwt);
+		final MUserDto userInfo = authService.getUserInfo(authenticationRequest.getEmail());
+		return new AuthenticationResponseDto(jwt, userInfo);
 	}
 }
