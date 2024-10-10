@@ -6,6 +6,7 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tanya.movie_rating.constant.CommonConstant;
 import com.tanya.movie_rating.dao.MUserDao;
@@ -15,6 +16,7 @@ import com.tanya.movie_rating.dto.signup_user.SignupResponseDto;
 import com.tanya.movie_rating.entity.MUser;
 
 @Service
+@Transactional
 public class AuthServiceImpl implements AuthService{
 	
 	@Autowired

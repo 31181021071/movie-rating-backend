@@ -9,7 +9,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class InitAdminProfileResponseDto {
+public class InitMovieManagementAdminProfileResponseDto {
 
 	private List<MCodes> listCountry;
+	
+	private List<MCodes> listGenre;
 }
