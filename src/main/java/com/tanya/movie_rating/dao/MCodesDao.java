@@ -14,4 +14,7 @@ public interface MCodesDao {
 
 	@Select
 	List<MCodes> selectByCodeType(String codeType);
+	
+	@Select
+	MCodes selectByCodeTypeAndCode(String codeType, String code);
 }

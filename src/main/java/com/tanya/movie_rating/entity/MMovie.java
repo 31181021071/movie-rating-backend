@@ -1,5 +1,8 @@
 package com.tanya.movie_rating.entity;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
 import org.seasar.doma.GeneratedValue;
@@ -27,8 +30,8 @@ public class MMovie extends CommonEntity {
     @Column(name = "country")
     private String country;
 
-    @Column(name = "release_year")
-    private Integer releaseYear;
+    @Column(name = "release_date")
+    private LocalDate releaseDate;
 
     @Column(name = "genre")
     private String genre;
@@ -40,8 +43,8 @@ public class MMovie extends CommonEntity {
     private byte[] image;
 
     @Column(name = "rating")
-    private double rating;
+    private BigDecimal rating;
 
     @Column(name = "is_show")
-    private Boolean isShow;
+    private String isShow;
 }

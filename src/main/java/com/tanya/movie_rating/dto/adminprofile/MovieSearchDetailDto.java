@@ -1,14 +1,13 @@
 package com.tanya.movie_rating.dto.adminprofile;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class MovieDetailDto {
+public class MovieSearchDetailDto {
 
 	private int id;
 	
@@ -18,14 +17,9 @@ public class MovieDetailDto {
 	
 	private String releaseDate;
 	
-	private List<String> genre;
+	private String genre;
 	
 	private BigDecimal rating;
 	
 	private String isShow;
-	
-	private String description;
-	
-	private byte[] img;
-	
 }

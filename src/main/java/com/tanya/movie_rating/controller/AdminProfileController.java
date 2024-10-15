@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tanya.movie_rating.dto.adminprofile.InitMovieManagementAdminProfileResponseDto;
 import com.tanya.movie_rating.dto.adminprofile.MovieDetailDto;
+import com.tanya.movie_rating.dto.adminprofile.MovieSearchConditionDto;
+import com.tanya.movie_rating.dto.adminprofile.MovieSearchResultDto;
 import com.tanya.movie_rating.service.adminprofile.AdminProfileService;
 
 @RestController
@@ -55,6 +57,16 @@ public class AdminProfileController {
 	public ResponseEntity<?> getMovieDetail(@PathVariable int movieId) {
 		try {
 			MovieDetailDto result = adminProfileService.getMovieDetail(movieId);
+			return ResponseEntity.ok(result);
+		} catch (Exception e) {
+			return new ResponseEntity<> (HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@PostMapping("/movie-management/search")
+	public ResponseEntity<?> search(@RequestBody MovieSearchConditionDto dto) {
+		try {
+			MovieSearchResultDto result = adminProfileService.search(dto);
 			return ResponseEntity.ok(result);
 		} catch (Exception e) {
 			return new ResponseEntity<> (HttpStatus.INTERNAL_SERVER_ERROR);

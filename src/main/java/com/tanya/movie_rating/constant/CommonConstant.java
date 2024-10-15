@@ -12,4 +12,7 @@ public class CommonConstant {
 	
 	public final static String M_CODES_COUNTRY = "0000000001";
 	public final static String M_CODES_GENRE = "0000000002";
+	
+	public final static String LOCAL_DATE_FORMAT = "yyyy/MM/dd";
+	public final static String LOCAL_DATE_STRING_FORMAT = "MM/dd/yyyy";
 }
