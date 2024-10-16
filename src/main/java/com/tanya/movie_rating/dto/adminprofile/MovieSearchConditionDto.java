@@ -15,6 +15,8 @@ public class MovieSearchConditionDto {
 	private String releaseDateTo;
 	private List<String> country;
 	private List<String> genre;
+	private List<String> director;
+	private List<String> actor;
 	private List<String> isShow;
 	private BigDecimal ratingFrom;
 	private BigDecimal ratingTo;

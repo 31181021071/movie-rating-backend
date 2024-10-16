@@ -5,7 +5,7 @@ from
 where
 	valid_flag = 1
 /*%if condition.movieName != null && condition.movieName != ""*/
-	and movie_name like '%' || /*condition.movieName*/'movie' || '%'
+	and movie_name like CONCAT('%', /*condition.movieName*/'movie', '%')
 /*%end*/
 /*%if condition.releaseDateFrom != null && condition.releaseDateFrom != ""*/
 	and release_date >= /*condition.releaseDateFrom*/'2024-10-01'
@@ -19,8 +19,28 @@ where
 /*%if condition.genre != null && !condition.genre.isEmpty()*/
 	and (
     /*%for genre : condition.genre */
-           ( genre like '%' || /*genre*/'dummy' || '%' )
+           ( genre like CONCAT('%', /*genre*/'1', '%') )
        /*%if genre_has_next */
+           /*# "OR" */
+       /*%end */
+    /*%end*/
+      )
+/*%end*/
+/*%if condition.director != null && !condition.director.isEmpty()*/
+	and (
+    /*%for director : condition.director */
+           ( director like CONCAT('%', /*director*/'1', '%') )
+       /*%if director_has_next */
+           /*# "OR" */
+       /*%end */
+    /*%end*/
+      )
+/*%end*/
+/*%if condition.actor != null && !condition.actor.isEmpty()*/
+	and (
+    /*%for actor : condition.actor */
+           ( actor like CONCAT('%', /*actor*/'1', '%') )
+       /*%if actor_has_next */
            /*# "OR" */
        /*%end */
     /*%end*/

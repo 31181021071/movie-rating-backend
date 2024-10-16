@@ -40,10 +40,44 @@ CREATE TABLE `m_movie` (
   `country` varchar(10) NOT NULL,
   `release_date` date DEFAULT NULL,
   `genre` varchar(100) NOT NULL,
+  `director` varchar(100) NOT NULL,
+  `actor` varchar(500) NOT NULL,
   `description` longtext NOT NULL,
   `image` longblob,
   `rating` decimal(1,1) DEFAULT NULL,
   `is_show` varchar(1) DEFAULT '1',
+  `valid_flag` bit(1) DEFAULT NULL,
+  `create_dt` datetime DEFAULT NULL,
+  `create_by` varchar(100) DEFAULT NULL,
+  `update_dt` datetime DEFAULT NULL,
+  `update_by` varchar(100) DEFAULT NULL,
+  `version` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `m_director` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `country` varchar(10) NOT NULL,
+  `birth` date DEFAULT NULL,
+  `description` longtext NOT NULL,
+  `image` longblob,
+  `valid_flag` bit(1) DEFAULT NULL,
+  `create_dt` datetime DEFAULT NULL,
+  `create_by` varchar(100) DEFAULT NULL,
+  `update_dt` datetime DEFAULT NULL,
+  `update_by` varchar(100) DEFAULT NULL,
+  `version` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `m_actor` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `country` varchar(10) NOT NULL,
+  `birth` date DEFAULT NULL,
+  `description` longtext NOT NULL,
+  `image` longblob,
   `valid_flag` bit(1) DEFAULT NULL,
   `create_dt` datetime DEFAULT NULL,
   `create_by` varchar(100) DEFAULT NULL,

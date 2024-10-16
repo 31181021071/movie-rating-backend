@@ -1,6 +1,5 @@
 package com.tanya.movie_rating.entity;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import org.seasar.doma.Column;
@@ -16,31 +15,22 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "m_movie")
-public class MMovie extends CommonEntity {
+@Table(name = "m_director")
+public class MDirector extends CommonEntity {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "movie_name")
-    private String movieName;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "country")
     private String country;
 
-    @Column(name = "release_date")
-    private LocalDate releaseDate;
-
-    @Column(name = "genre")
-    private String genre;
-    
-    @Column(name = "director")
-    private String director;
-    
-    @Column(name = "actor")
-    private String actor;
+    @Column(name = "birth")
+    private LocalDate birth;
 
     @Column(name = "description")
     private String description;
@@ -48,9 +38,4 @@ public class MMovie extends CommonEntity {
     @Column(name = "image")
     private byte[] image;
 
-    @Column(name = "rating")
-    private BigDecimal rating;
-
-    @Column(name = "is_show")
-    private String isShow;
 }

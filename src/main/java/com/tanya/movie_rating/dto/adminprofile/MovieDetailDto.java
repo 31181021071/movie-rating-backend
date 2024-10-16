@@ -20,6 +20,10 @@ public class MovieDetailDto {
 	
 	private List<String> genre;
 	
+	private List<String> director;
+	
+	private List<String> actor;
+	
 	private BigDecimal rating;
 	
 	private String isShow;
