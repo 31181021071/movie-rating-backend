@@ -14,6 +14,9 @@ public interface MUserDao {
 	@Select
     MUser selectByEmail(String email); 
 	
+	@Select
+    MUser selectById(int id); 
+	
 	@Insert
 	int insert(MUser entity);
 }

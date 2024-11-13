@@ -30,4 +30,7 @@ public interface MDirectorDao {
 	
 	@Select
 	int selectCountByCondition(DirectorSearchConditionDto condition);
+	
+	@Select
+	List<MDirector> selectAll();
 }

@@ -14,4 +14,6 @@ public class ActorSearchDetailDto {
 	private String country;
 	
 	private String birth;
+	
+	private byte[] img;
 }

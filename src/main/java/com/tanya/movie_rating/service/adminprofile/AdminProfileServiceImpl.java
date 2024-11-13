@@ -59,6 +59,7 @@ public class AdminProfileServiceImpl implements AdminProfileService {
 	public InitMovieManagementAdminProfileResponseDto getInitMovieDetail() {
 		List<MCodes> listCountry = mCodesDao.selectByCodeType(CommonConstant.M_CODES_COUNTRY);
 		List<MCodes> listGenre = mCodesDao.selectByCodeType(CommonConstant.M_CODES_GENRE);
+
 		InitMovieManagementAdminProfileResponseDto result = new InitMovieManagementAdminProfileResponseDto();
 		result.setListCountry(listCountry);
 		result.setListGenre(listGenre);

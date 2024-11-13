@@ -22,4 +22,6 @@ public class MovieSearchDetailDto {
 	private BigDecimal rating;
 	
 	private String isShow;
+	
+	private byte[] img;
 }

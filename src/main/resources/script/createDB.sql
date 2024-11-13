@@ -86,3 +86,46 @@ CREATE TABLE `m_actor` (
   `version` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `t_movie_img` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `movie_id` int NOT NULL,
+  `img_name` varchar(100) NOT NULL,
+  `img_byte` longblob NOT NULL,
+  `valid_flag` bit(1) DEFAULT NULL,
+  `create_dt` datetime DEFAULT NULL,
+  `create_by` varchar(100) DEFAULT NULL,
+  `update_dt` datetime DEFAULT NULL,
+  `update_by` varchar(100) DEFAULT NULL,
+  `version` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `t_movie_review` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `movie_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `review` longtext,
+  `rating` decimal(1,1) DEFAULT NULL,
+  `valid_flag` bit(1) DEFAULT NULL,
+  `create_dt` datetime DEFAULT NULL,
+  `create_by` varchar(100) DEFAULT NULL,
+  `update_dt` datetime DEFAULT NULL,
+  `update_by` varchar(100) DEFAULT NULL,
+  `version` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `t_movie_review_report` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `movie_review_id` int NOT NULL,
+  `user_review_id` int NOT NULL,
+  `user_report_id` int NOT NULL,
+  `valid_flag` bit(1) DEFAULT NULL,
+  `create_dt` datetime DEFAULT NULL,
+  `create_by` varchar(100) DEFAULT NULL,
+  `update_dt` datetime DEFAULT NULL,
+  `update_by` varchar(100) DEFAULT NULL,
+  `version` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

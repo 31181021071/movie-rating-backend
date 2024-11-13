@@ -30,4 +30,7 @@ public interface MActorDao {
 	
 	@Select
 	int selectCountByCondition(ActorSearchConditionDto condition);
+	
+	@Select
+	List<MActor> selectAll();
 }

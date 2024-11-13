@@ -14,4 +14,6 @@ public class DirectorSearchDetailDto {
 	private String country;
 	
 	private String birth;
+	
+	private byte[] img;
 }
